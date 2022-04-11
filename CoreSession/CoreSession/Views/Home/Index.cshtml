@@ -1,0 +1,54 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1 style="color:#00ffff">This is ViewBag</h1>
+
+<h4>@ViewBag.a</h4>
+<h4>@ViewBag.a1</h4>
+<h4>@ViewBag.a2</h4>
+<h4>@ViewBag.a3</h4>
+<ul>
+    @foreach (var item in ViewBag.List)
+    {
+        <li>@item</li>
+    }
+</ul>
+
+
+<h1 style="color:#ff0000">This is ViewData</h1>
+
+<h4>@ViewData["a"]</h4>
+<h4>@ViewData["a1"]</h4>
+<h4>@ViewData["a2"]</h4>
+<h4>@ViewData["a3"]</h4>
+<ul>
+    @foreach (var item in (List<string>)ViewData["List"])
+    {
+        <li>@item</li>
+    }
+</ul>
+
+
+<h1 style="color:#0026ff">This is TempData</h1>
+
+<h4>@TempData["a"]</h4>
+<h4>@TempData["a1"]</h4>
+<h4>@TempData["a2"]</h4>
+<h4>@TempData["a3"]</h4>
+<ul>
+    @foreach (var item in (List<string>)TempData["List"])
+    {
+        <li>@item</li>
+    }
+</ul>
+<hr />
+<h1 style="color:#ffd800">This is my Session</h1>
+
+<h2>@HttpContextAccessor.HttpContext.Session.GetString("Name")</h2>
